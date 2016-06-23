@@ -17,15 +17,34 @@
             <a href="#" id="linkCreateBook">Create Book</a>
             <a href="#" id="linkLogout">Logout</a>
 
-            <section id="viewHome"></section>
+            <section id="viewHome">
+                <h1>WELCOME</h1>
+                Welcome to our book library.
+            </section>
 
-            <section id="viewLogin"></section>
+            <section id="viewLogin">
+                <h1>Please login.</h1>
+                <form id="loginForm">
+                    <div>User name:</div>
+                    <div><input type="text" id="loginUser" required="true"/></div>
+                    <div>Password:</div>
+                    <div><input type="password" id="loginPass" required="true"/></div>
+                    <div><input type="submit" value="Login"/></div>
+                </form>
+            </section>
 
             <section id="viewRegister"></section>
-
-            <section id="viewListBook"></section>
+            <!--DO TUK-->
+            <section id="viewBooks"></section>
 
             <section id="viewCreateBook"></section>
+
+            <!--Pop ups-->
+            <section id="loadingBox">loading...</section>
+            <section id="infoBox" onclick='$(this).fadeOut()'>info</section>
+            <section id="errorBox" onclick='$(this).fadeOut()'>error</section>
+            <!--end of Pop ups-->
+            <footer>Book Library  - Sample Project</footer>
         </header>
     </body>
 </html>
