@@ -4,47 +4,67 @@
     <head>
         <meta charset="UTF-8">
         <title>Book Library</title>
-        <script src="lib/jquery-3.0.0.min.js"></script>
-        <script src="lib/books.js"></script>
+        <script src="scripts/jquery-3.0.0.min.js"></script>
+        <script src="scripts/books.js"></script>
         <link rel="stylesheet" href="styles/books-css.css"/>
     </head>
     <body>
-        <header>
+        <header id="menu">
             <a href="#" id="linkHome">Home</a>
             <a href="#" id="linkLogin">Login</a>
             <a href="#" id="linkRegister">Register</a>
             <a href="#" id="linkListBooks">List Book</a>
             <a href="#" id="linkCreateBook">Create Book</a>
             <a href="#" id="linkLogout">Logout</a>
-
+        </header>
+        <!--Pop ups-->
+        <section id="loadingBox">loading...</section>
+        <section id="infoBox" onclick='$(this).fadeOut()'>info</section>
+        <section id="errorBox" onclick='$(this).fadeOut()'>error</section>
+        <!--end of Pop ups-->
+        <main>
             <section id="viewHome">
                 <h1>WELCOME</h1>
                 Welcome to our book library.
             </section>
-
             <section id="viewLogin">
-                <h1>Please login.</h1>
+                <h1>Please login</h1>
                 <form id="loginForm">
                     <div>User name:</div>
                     <div><input type="text" id="loginUser" required="true"/></div>
                     <div>Password:</div>
                     <div><input type="password" id="loginPass" required="true"/></div>
-                    <div><input type="submit" value="Login"/></div>
+                    <div><input type="submit" id="buttonLogin" value="Login"/></div>
                 </form>
             </section>
+            <section id="viewRegister">
+                <h1>Please register here</h1>
+                <form id="formRegister">
+                    <div>Username:</div>
+                    <div><input type="text" id="registerUser" required="true"></div>
+                    <div>Password:</div>
+                    <div><input type="password" id="registerPassword" required="true"></div>
+                    <div><input type="submit" id="buttonRegister" value="Register"></div>
+                </form>
+            </section>
+            <section id="viewBooks">
+                 <h1>Books</h1>
+                <div id="books"/>
+            </section>
+            <section id="viewCreateBook">
+                <h1>Create new book</h1>
+                <form id="formCreateBook">
+                    <div>Title:</div>
+                    <div><input type="text" id="bookTitle" required="true"></div>
+                    <div>Author:</div>
+                    <div><input type="text" id="bookAuthor" required="true"></div>
+                    <div>Description:</div>
+                    <div><textarea id="bookDescription" cols="30" rows="10" required="true"></textarea></div>
+                    <div><input type="submit" id="buttonCreateBook" value="Create"></div>
+                </form>
+            </section>
+        </main>
 
-            <section id="viewRegister"></section>
-            <!--DO TUK-->
-            <section id="viewBooks"></section>
-
-            <section id="viewCreateBook"></section>
-
-            <!--Pop ups-->
-            <section id="loadingBox">loading...</section>
-            <section id="infoBox" onclick='$(this).fadeOut()'>info</section>
-            <section id="errorBox" onclick='$(this).fadeOut()'>error</section>
-            <!--end of Pop ups-->
-            <footer>Book Library  - Sample Project</footer>
-        </header>
+        <footer>Book Library  - Sample Project</footer>
     </body>
 </html>
