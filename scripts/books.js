@@ -10,7 +10,7 @@ function showView(viewId) {
 }
 
 function showHideNavigationLinks() {
-    let loggedIn = sessionStorage.authToken != null;
+    let loggedIn = sessionStorage.authtoken != null;
     if(loggedIn){
         $("#linkHome").show();
         $("#linkLogin").hide();
@@ -52,7 +52,7 @@ function login() {
         error: showAjaxError
     });
     function loginSuccess(data, status) {
-        sessionStorage.authToken = data._kmd.authToken;
+        sessionStorage.authtoken = data._kmd.authtoken;
         showListBooksView();
         showHideNavigationLinks();
         showInfo("Login successful")
@@ -60,7 +60,7 @@ function login() {
 }
 
 function showInfo(messageText){
-    $('#infoBox').test(messageText).show().delay(3000).fadeOut();
+    $('#infoBox').test(messageText).show();//.delay(3000).fadeOut();
 }
 
 function showAjaxError(data, status) {
@@ -89,7 +89,7 @@ function register() {
         error: showAjaxError
     });
     function registerSuccess(data, status) {
-        sessionStorage.authToken = data._kmd.authtoken;
+        sessionStorage.authtoken = data._kmd.authtoken;
         showListBooksView();
         showHideNavigationLinks();
         showInfo("Register successful")
@@ -101,7 +101,7 @@ function showListBooksView() {
     $('#books').text('');
 
     let booksUrl = kinveyServiceBaseUrl + "appdata/" + kinveyAppID + "/books";
-    let kinveyAuthHeaders = {'Authorization': "Kinvey " + sessionStorage.authToken};
+    let kinveyAuthHeaders = {'Authorization': "Kinvey " + sessionStorage.authtoken};
     $.ajax({
         method: "GET",
         url: booksUrl,
@@ -110,7 +110,7 @@ function showListBooksView() {
         error: showAjaxError
     });
     function booksLoaded(data, status) {
-        showInfo("Books loaded");
+        //showInfo("Books loaded");
         let booksTable = $('<table>')
             .append($('<tr>')
                 .append($('<th>Title</th>'))
@@ -135,7 +135,7 @@ function showCreateBookView() {
 function createBook() {
 
     let booksUrl = kinveyServiceBaseUrl + "appdata/" + kinveyAppID + "/books";
-    let kinveyAuthHeaders = {'Authorization': "Kinvey " + sessionStorage.authToken,
+    let kinveyAuthHeaders = {'Authorization': "Kinvey " + sessionStorage.authtoken,
                              "Content-type": "application/json"};
     let newBookData = {
         title: $('#bookTitle').val(),
@@ -143,7 +143,7 @@ function createBook() {
         description: $('#bookDescription').val()
     };
     $.ajax({
-        method: "GET",
+        method: "POST",
         url: booksUrl,
         data: JSON.stringify(newBookData),
         headers: kinveyAuthHeaders,
